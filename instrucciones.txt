@@ -1,0 +1,118 @@
+https://www.youtube.com/watch?v=ScDWrogElmo&t=306s
+Recursos necesarios: https://github.com/john-smilga/setup-files-react-beach-resort
+1. Crear proyecto resort
+	>npx create-react-app resorts 
+2. Añadir dependencia react-icons
+	>npm install react-icons
+3. Añadir dependencia react-router-dom
+	>npm i react-router-dom --save
+4. Cree un archivo plano _redirects;Netlify; es un servidor en cloud para la app: https://docs.netlify.com/routing/redirects/
+5. Copie el siguiente contenido a _redirects: (https://dev.to/dance2die/page-not-found-on-netlify-with-react-router-58mc)
+/*    /index.html   200
+6. Copiar las carpeta images src del proyecto
+7. Copiar el archivo data.js a src del proyecto
+8. Remplazar el archivo App.css de src del proyecto con el de recursos compartidos
+9. Crear carpeta pages en src; contendra capa página con los componentes
+10. Cree el archivo Home.js dentro de la carpeta pages; la primera letra con mayuscula!
+***Agregar componente a VS Code: ES7 React/Redux/GraphQL/React-Native snippets para shortcuts en React code
+11. Se tiene los siguientes atajos:
+	rfc (enter); Funcion React
+	rafc (enter); const React con Funcion React
+	rcc (enter); class React
+12. Cree el archivo Rooms.js dentro de la carpeta pages;
+13. Cree el archivo SingleRooms.js dentro de la carpeta pages;
+14. Cree el archivo Error.js dentro de la carpeta pages;
+15. Añada en index.js las variables correspondientes a react-router-dom usando el ejemplo de https://reacttraining.com/react-router/web/guides/quick-start
+	import  {BrowserRouter as Router} from 'react-router-dom'
+	 
+16. Envuelva la etiqueta App con la etiqueta Router en la funcion render
+	<Router>
+		<App>
+	</Router>
+17. En App.js, añada las variables
+	import {Route, Switch} from 'react-router-dom'
+18. En App.js, añada las sgts rutas en return
+<>
+	<Route exact path="/" component={Home}>
+	<Route exact path="/rooms/" component={Rooms}>
+	<Route exact path="/rooms/:slug" component={SingleRoom}>		
+</>
+19. En App.js, envuelva las etiquetas <Route> con <Switch>, así se podrá invocar una ruta que no coincida con las demás, siendo esta la de error:
+<>
+<Swith>
+	<Route exact path="/" component={Home}>
+	<Route exact path="/rooms/" component={Rooms}>
+	<Route exact path="/rooms/:slug" component={SingleRoom}>		
+	<Route component={Error}>
+</Switch>
+</>
+20. Dentro del folder src, cree la carpeta components
+21. Dentro del folder components, cree Navbar.js que representará la barra de navegación
+Use el atajo rcc y retorne un hello desde navbar
+22. Desde App.js, añada la variable Navbar, y llamela antes de la etiqueta <Switch>
+23. Desde Navbar.js, añada las sgts variables; Para obtener el icono de menu resumido use react-icon
+import logo from '../images/logo.svg';
+import {FaAlignRight} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
+24. Completar Navbar.js, incluir el estado isOpen para controlar el menu responsivo, y la funcion handleToggle
+25. Dentro del folder componentes, cree Hero.js
+26. En Hero.js use rfc para crear una funcion con dos propiedades: children y hero, y añada codigo
+27. Desde Home.js agregue el componente Hero.js sin propiedades
+28. Desde Rooms.js agregue el componente Hero.js con la propiedad hero="roomsHero"
+29. Desde Error.js agregue el componente Hero.js sin propiedades
+30. Dentro del folder componentes, cree Banner.js
+31. En Banner.js use rfc para crear una funcion con tres propiedades: children, title y subtitle, y añada codigo
+32. Desde Home.js agregue el componente Banner.js con las propiedades title y subtitle, anide un children Link a Rooms con estilo boton.
+33. Desde Error.js agregue el componente Banner.js con las propiedades title y subtitle, anide un children Link a Home con estilo boton.
+34. Dentro del folder componentes, cree Services.js y Title.js
+35. En Services.js, use rcc para crear una clase.
+36. En Title.js, use rfc para crear una funcion que recibe la propiedad title, añada código
+37. En Services.js, añada el componente Title.js
+38. En Home.js, añada el componente Services.js debajo de Hero.js; para que ambos puedan estar envuelvalos con un Fragment
+39. En Services.js, añada los iconos:
+FaCocktail, FaHicking, FaShuttleVan, FaBeer de react-icons/fa 
+40. En Services.js, añada un state con la lista servicios, cada elemento es un objeto con icon, title e info
+41. Dentro de src cree el archivo Context.js
+42. En Context.js, use rcc para crear un clase, complete el código
+43. En index.js, añada RoomProvider desde Context.js
+44. En index.js, envuelva con <RoomProvider> las etiquetas Router y App.
+45. Dentro del folder componentes, cree FeaturedRooms.js
+46. En FeaturedRooms.js, use rcc para crear la clase, y complete el código
+47. En Home.js, añada el componente FeaturedRooms despues de Services.
+48. En Context.js, añada un componente a data.js y agregue código para extraer los datos:
+funcion:
+formatData(items)
+componentDidMount()
+49. En FeaturedRooms.js, añadir una constante que reciba los featuredRooms de Context.js
+50. Dentro del folder componentes cree el archivo Loading.js
+51. En Loading.js, use rfc para crear una funcion, añada un gif y complete el código.
+52. En FeaturedRooms.js, añada el componente Loading y agreguelo dentro del Div renderizado.
+53. Dentro del folder componentes cree el archivo Room.js
+54. En Room.js use rfc y devuelva una cadena.
+55. En FeaturedRooms.js, añada componente Room, y coloquela sobre Loading
+56. En FeaturedRooms.js, mapee rooms como un componente Room con id y room
+57. En Room.js añadir el componente Link y protoTypes
+58. En Context.js añadir la funcion getRoom, y agregarla a la propiedad value del componente RoomContext.Provider
+59. En SingleRoom.js, añada los componentes Hero, Banner, Link y el contexto RoomContext; añada un constructor para recibir los props,estado y complete el código
+60. Instale la API styled-components: npm i --save styled-components
+61. Dentro del folder componentes cree el archivo StyledHero.js
+62. En StyledHero.js cree el componente StyledHero con estilo redefinido con styled-components
+63. En SingleRoom.js, añada el componente StyledHero y modifique el código
+64. Dentro del folder componentes cree el archivo RoomsContainer.js, RoomList.js y RoomFilter.js
+65. En RoomList.js use rfc para crear una funcion que recibe un objeto rooms y complete el código.
+66. En RoomFilter.js use rfc para crear una funcion que recibe un objeto rooms.
+67. En RoomFilter.js añade los componentes useContext desde 'react' y RoomContext de Context.js y complete el código.
+68. En Context.js añada la variable RoomConsumer a partir de RoomContext.Consumer
+69. En Context.js exporte el componente withRoomConsumer que usa la función ConsumerWrapper para RoomConsumer.
+70. En Context.js dentro del componente RoomProvider, añada el método filterRooms() que devuelve un conjunto de rooms filtrados.
+71. En RoomsContainer.js añada los componentes: RoomFilter, RoomList y withRoomConsumer
+72. En RoomsContainer.js use rfc para crear una funcion que recibe un objeto context.
+73. En RoomsContainer.js complete el codigo.
+USE EXTERNAL RESOURCES:
+74. Cree una cuenta gratuita en https://www.contentful.com/, que provee una capa para la administracion del contenido.
+75. Puede usar su cuenta de GitHub para Crear una cuenta en Contentful, cree un content type y añada datos.
+76. Instale contentful.
+77. Dentro de src cree el archivo Contentful.js
+78. En Context.js, importe el componente Cliente de Contentful.js
+79. 
+
